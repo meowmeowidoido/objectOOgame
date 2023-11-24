@@ -10,19 +10,19 @@ class Player{
    ellipse(playerX,playerY,20,30);
    
    }
-   constrain(playerY,170,270);
-   
+ 
  }
- void updateBlob(){
+ void moveUp(){
    
-   frameRate(10);
-   if(keyPressed){
-   if(key==CODED){
-    if(keyCode==UP){
+
+   if(playerY>170){
       playerY-=50;
+   
     
 }
-if(keyCode==DOWN){
+ }
+void moveDown(){
+  if(playerY<250){
       playerY+=50;
     }
 
@@ -31,6 +31,5 @@ if(keyCode==DOWN){
   
   
 }
-}
-}
+
 }
