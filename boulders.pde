@@ -3,8 +3,8 @@ class Boulders
  
   PVector position=new PVector();
   PVector velocity=new PVector();
-    Boulders(float y){
-      position.x=random(400,420);
+    Boulders(float y, float x){
+      position.x=x;
       position.y=y;
       
     }
@@ -22,9 +22,8 @@ class Boulders
      velocity.x=-0.2;
      
      if(position.x<-5){
-       position.x=random(450,500);
+      position.x=random(500,1200);
      }
      
    }
-   
-}
+}  

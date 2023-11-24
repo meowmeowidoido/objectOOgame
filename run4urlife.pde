@@ -13,9 +13,9 @@ void setup(){
   boulderL1=new ArrayList<Boulders>();
   boulderL2=new ArrayList<Boulders>();
   boulderL3=new ArrayList<Boulders>();
-  boulderL1.add(new Boulders(170));
-  boulderL2.add(new Boulders(225));
-  boulderL3.add(new Boulders(275));
+  boulderL1.add(new Boulders(170, random(420,600)));
+  boulderL2.add(new Boulders(225,random(500,700)));
+  boulderL3.add(new Boulders(275,random(600,900)));
 
 }
 
@@ -29,16 +29,18 @@ void draw(){
   blob.displayBlob();
   
   
-  for(int i=0;i<boulderL1.size();i++){
+  for(int i=0;i<boulderL1.size ();i++){
     boulderL1.get(i).updateBoulders();
     boulderL2.get(i).updateBoulders();
     boulderL3.get(i).updateBoulders();
     boulderL1.get(i).displayBoulders();
     boulderL2.get(i).displayBoulders();
     boulderL3.get(i).displayBoulders();
-  
+      
+   
   }
    
+  
 
   
   
