@@ -36,16 +36,16 @@ class Player{
  void moveUp(){
    
 
- //  if(playerY>170){
+   if(playerY>170){
       playerY-=50;
    
     
-//}
+}
  }
 void moveDown(){
-  //if(playerY<250){
+    if(playerY<250){
       playerY+=50;
-  // }
+   }
 
    
   

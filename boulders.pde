@@ -6,13 +6,14 @@ class Boulders
   PVector velocity=new PVector();
   float bouldWidth;
   float bouldHeight;
+  float acceleration=-1;
+
+  
     Boulders(float y, float x, float bWidth, float bHeight){
       position.x=x;
       position.y=y;
       bouldWidth=bWidth;
       bouldHeight=bHeight;
-      
-      
     }
    
    void displayBoulders(){
@@ -21,32 +22,41 @@ class Boulders
      
    }
    
+   
    void updateBoulders(){
      position.x+=velocity.x;
      position.y+=velocity.y;
-     //velocity.y=random(-1,1);
-     velocity.x=-0.2;
+     velocity.x=-1;
      
-     if(position.x<-5){
-      position.x=random(500,1200);
+    do{
+     if(position.x<-10){
+      position.x=random(500,800);
+
+      velocity.x-=-1;
+      
      }
-     
+     position.x+=velocity.x;
+      }while(acceleration<-100);
+        
+ 
    }
+
+     
+   
    
    void collisionBoulder(){
-//dist(position.x,position.y,blob.getPositionX(),blob.getPositionY())<(20+20))
+ //CODE TAKEN FROM:
+//https://www.jeffreythompson.org/collision-detection/circle-circle.php
       float distanceX= blob.getPositionX()-position.x;
-      float distanceY=blob.getPositionY()- position.y;
+      float distanceY=position.y-blob.getPositionY();
       float distance= sqrt((distanceX*distanceX)+(distanceY+distanceY));
-      float radiusBoulder=bouldWidth+bouldHeight/2;
-      float blobRadius=blob.blobWidth()+blob.blobHeight()/2;
-        if(distance<=(radiusBoulder + blobRadius)){
-        if(blob.getPositionX()+blob.blobWidth()/2>position.x &&blob.getPositionX()<position.x+bouldWidth/2&&blob.getPositionY()<=position.y+bouldHeight && blob.getPositionY()+blob.blobHeight()/2>position.y){
+      float radiusBoulder=(bouldWidth+bouldHeight);
+      float blobRadius=(blob.blobWidth()+blob.blobHeight());
+        if(distance<=(radiusBoulder + blobRadius)/2){
+      
      blob.playerHit=true;
      print("hi");
-          
-     }
-    
+     
    }
    
 }  
