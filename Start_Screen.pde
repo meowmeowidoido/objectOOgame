@@ -1,5 +1,6 @@
 class Startscreen 
 {
+  Player blob=new Player();
   boolean startTrue=false;
   void displayStartscreen(){
    if(startTrue==false){
@@ -10,7 +11,6 @@ class Startscreen
      text("RUN FOR YOUR LIFE!",40,30);
      textSize(20);
      text("Press Space to Start!",125,350);
-     
    }
     
   }

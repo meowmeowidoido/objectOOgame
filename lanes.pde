@@ -14,8 +14,9 @@ class Lanes{
   
  void laneDisplay(){
    if(laneSpawn==true){
-     fill(0);
+     fill(200,100,20);
      rect(positionX,positionY,laneWidth,laneHeight);
+ 
    }
  }
   
