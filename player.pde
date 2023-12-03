@@ -2,7 +2,7 @@ class Player{
   boolean playerAlive=false;
   boolean playerHit=false;
   PVector position= new PVector ();
- Player(float x, float y, float v){
+ Player(float x, float y){
   position.x=x;
   position.y=y;
   

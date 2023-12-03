@@ -1,6 +1,6 @@
 class Boulders
 {
- 
+  float hit=0;
   PVector position=new PVector();
   PVector velocity=new PVector();
   float bouldWidth;
@@ -21,7 +21,7 @@ class Boulders
    
    
    void updateBoulders(){
-     position.x-=1;
+     position.x-=2;
      position.y+=velocity.y;
  
      
@@ -33,11 +33,11 @@ class Boulders
       
      }
      position.x+=velocity.x;
-   //  print(velocity.x);
+     //print(velocity.x);
       }while(velocity.x<-10);
         
      if(position.x<-10){
-       position.x=random(500,800);
+       position.x=random(500,1200);
      }
    }
 
@@ -45,12 +45,19 @@ class Boulders
    
    
    void collisionBoulder(){
+     
+ do{
    if(dist(blob.position.x,blob.position.y,position.x,position.y)<30){
-      
-     blob.playerHit=true;
+     
+     
+     hit=+1;
      print("hi");
      
    }
-   
+   if(hit>0){
+     blob.playerAlive=false;
+     start.startTrue=false;
+   }
+ }while(hit>1);
 }  
 }

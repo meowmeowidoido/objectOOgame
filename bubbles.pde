@@ -28,7 +28,8 @@ class bubbles{
  if(position.y<-5){
    position.y=random(430,800); 
  }
+ 
+
 }
-
-
+ 
 }
