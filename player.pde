@@ -1,34 +1,28 @@
 class Player{
   boolean playerAlive=false;
   boolean playerHit=false;
-  float playerX=30;
-  float playerY=225;
-  float blobW,blobH;
+  PVector position= new PVector ();
+ Player(float x, float y, float v){
+  position.x=x;
+  position.y=y;
+  
+ }
  
  
  float getPositionX(){
-   return playerX;
+   return position.x;
  }
  
  float getPositionY(){
-   return playerY;
+   return position.y;
  }
- 
- float blobWidth(){
-   return blobW;
-   
- } 
- float blobHeight(){
-   return blobH;
-   
- } 
  
  
  void displayBlob(){
    
    if(playerAlive==true){
    fill(150);
-   ellipse(playerX,playerY,20,20);
+   ellipse(position.x,position.y,20,20);
    
    }
  
@@ -36,20 +30,18 @@ class Player{
  void moveUp(){
    
 
-   if(playerY>170){
-      playerY-=50;
+   if(position.y>180){
+      position.y=position.y-50;
    
     
 }
  }
 void moveDown(){
-    if(playerY<250){
-      playerY+=50;
+    if(position.y<250){
+      position.y=position.y+50;
    }
 
-   
-  
-  
+ 
   
 }
 

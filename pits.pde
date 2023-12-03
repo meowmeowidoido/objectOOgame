@@ -1,6 +1,5 @@
 class Pits
 {
-  Player blob=new Player();
  
   PVector position=new PVector();
   PVector velocity=new PVector();

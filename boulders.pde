@@ -1,13 +1,10 @@
 class Boulders
 {
-  Player blob=new Player();
  
   PVector position=new PVector();
   PVector velocity=new PVector();
   float bouldWidth;
   float bouldHeight;
-  float acceleration=-1;
-
   
     Boulders(float y, float x, float bWidth, float bHeight){
       position.x=x;
@@ -24,35 +21,31 @@ class Boulders
    
    
    void updateBoulders(){
-     position.x+=velocity.x;
+     position.x-=1;
      position.y+=velocity.y;
-     velocity.x=-1;
+ 
      
     do{
      if(position.x<-10){
-      position.x=random(500,800);
+      
 
-      velocity.x-=-1;
+      velocity.x-=0.2;
       
      }
      position.x+=velocity.x;
-      }while(acceleration<-100);
+   //  print(velocity.x);
+      }while(velocity.x<-10);
         
- 
+     if(position.x<-10){
+       position.x=random(500,800);
+     }
    }
 
      
    
    
    void collisionBoulder(){
- //CODE TAKEN FROM:
-//https://www.jeffreythompson.org/collision-detection/circle-circle.php
-      float distanceX= blob.getPositionX()-position.x;
-      float distanceY=position.y-blob.getPositionY();
-      float distance= sqrt((distanceX*distanceX)+(distanceY+distanceY));
-      float radiusBoulder=(bouldWidth+bouldHeight);
-      float blobRadius=(blob.blobWidth()+blob.blobHeight());
-        if(distance<=(radiusBoulder + blobRadius)/2){
+   if(dist(blob.position.x,blob.position.y,position.x,position.y)<30){
       
      blob.playerHit=true;
      print("hi");
