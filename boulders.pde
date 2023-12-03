@@ -1,6 +1,6 @@
 class Boulders
 {
-  Player blob=new Player();
+  Player blob=new Player(30,225,20);
  
   PVector position=new PVector();
   PVector velocity=new PVector();
@@ -50,9 +50,9 @@ class Boulders
       float distanceX= blob.getPositionX()-position.x;
       float distanceY=position.y-blob.getPositionY();
       float distance= sqrt((distanceX*distanceX)+(distanceY+distanceY));
-      float radiusBoulder=(bouldWidth+bouldHeight);
-      float blobRadius=(blob.blobWidth()+blob.blobHeight());
-        if(distance<=(radiusBoulder + blobRadius)/2){
+    //  float radiusBoulder=(bouldWidth+bouldHeight);
+   //  float blobRadius=(blob.blobWidth()+blob.blobHeight());
+     //   if(distance<=(radiusBoulder + blobRadius)/2){
       
      blob.playerHit=true;
      print("hi");
@@ -60,4 +60,3 @@ class Boulders
    }
    
 }  
-}

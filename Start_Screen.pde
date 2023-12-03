@@ -1,6 +1,6 @@
 class Startscreen 
 {
-  Player blob=new Player();
+  Player blob=new Player(30,225,20);
   boolean startTrue=false;
   void displayStartscreen(){
    if(startTrue==false){

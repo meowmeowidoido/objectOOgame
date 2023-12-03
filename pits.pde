@@ -1,13 +1,12 @@
 class Pits
 {
-  Player blob=new Player();
  
   PVector position=new PVector();
   PVector velocity=new PVector();
   float pitWidth;
   float pitHeight;
   float acceleration=-1;
-
+  boolean hit=false;
   
     Pits(float y, float x, float pWidth, float pHeight){
       position.x=x;
@@ -42,19 +41,34 @@ class Pits
    }
 
      
-   
-   
-   void pitCollision(){
-     //still working on proper way to detect
-     if(dist(position.x,position.y,blob.getPositionX(),blob.getPositionY())<30)
-     {
-      
-       
-     blob.playerHit=true;
-     print("hi");
-          
+   boolean playerPit(float playerX, float playerY, float playerR, float x, float y, float w, float h){
+  
+   //CODE FROM:  https://www.jeffreythompson.org/collision-detection/object_oriented_collision.php//
+   //I'm Sorry Collision Detection was just not working for me using arraylists and objects
+   float checkX=playerX; 
+   float checkY=playerY;
+     if(playerX<x) checkX=x;
+     else if(playerX>x+w) checkX=x+w;
+     if (playerY<y)  checkY=y;
+     else if(playerY>y+h) checkY=y+h;
      
+     
+     float distX=playerX-checkX;
+     float distY=playerY-checkY;
+     float distance=sqrt((distX*distX)+(distY+distY));
+     if(distance<=playerR){
+       return true;
      }
+     return false;
+   }
+   
+   void pitCollision(Player player){
+     //still working on proper way to detect
+     
+     hit=playerPit(player.x,player.y,player.r,position.x,position.y,pitWidth,pitHeight);
+    if(hit){
+      print("HIT");
+    }
    }
    
 }  

@@ -7,7 +7,7 @@ ArrayList <Pits> pitL1;
 ArrayList <Pits> pitL2;
 ArrayList <Pits> pitL3;
 bubbles [] bubble=new bubbles[20];
-Player blob=new Player();
+Player blob=new Player(30,225,20);
 Lanes lane1=new Lanes(0,150,400,50);
 Lanes lane2=new Lanes(0,250,400,50);
 Lanes lane3=new Lanes(0,200,400,50);
@@ -22,12 +22,11 @@ void setup(){
   boulderL1.add(new Boulders(175,random(400,900),30,30));
   boulderL2.add(new Boulders(225,random(430,900),30,30));
   boulderL3.add(new Boulders(275,random(480,900),30,30));
-  pitL1=new ArrayList<Pits>();
-  pitL2=new ArrayList<Pits>();
-  pitL3=new ArrayList<Pits>();
-  pitL1.add(new Pits(165,random(600,1500),30,30));
-  pitL2.add(new Pits(215,random(700,1200),30,30));
-  pitL3.add(new Pits(265,random(480,1600),30,30));
+ 
+ for(int i=0;i<10;i++){
+   pitL1=new ArrayList<Pits>();
+  pitL1.add(new Pits(random(165,250),random(100,400),30,30));
+ }
   for(int i=0;i<bubble.length;i++){
     bubble[i]=new bubbles();
   }
@@ -71,7 +70,7 @@ void draw(){
    
   }
   
- for(int t=0;t<boulderL2.size ();t++){
+ /*for(int t=0;t<boulderL2.size ();t++){
   boulderL2.get(t).collisionBoulder();
     boulderL2.get(t).displayBoulders();
     boulderL2.get(t).updateBoulders();
@@ -82,30 +81,20 @@ void draw(){
         boulderL3.get(j).updateBoulders();
       boulderL3.get(j).collisionBoulder();
         boulderL3.get(j).displayBoulders();
-        
+         
     }
-   
+   */
 
      
    }
     
-    for(int p=0;p<pitL1.size();p++){
-      pitL1.get(p).updatePits();
-      pitL2.get(p).updatePits();
-      pitL3.get(p).updatePits();
-      
-      pitL1.get(p).displayPits();
-      pitL2.get(p).displayPits();
-      pitL3.get(p).displayPits();
-      
-      
-      pitL1.get(p).pitCollision();
-      pitL2.get(p).pitCollision();
-      pitL3.get(p).pitCollision();
-      
+    
+
+    for(int i=0;i<pitL1.size();i++){
+      pitL1.get(i).pitCollision(blob);
+      pitL1.get(i).displayPits();
+      pitL1.get(i).updatePits();
     }
-
-
   }
   
   
