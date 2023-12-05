@@ -1,19 +1,38 @@
 //classes being called
 Startscreen start=new Startscreen();
 
+ArrayList<Lanes> laneDist;
 ArrayList<Boulders> boulder;
 ArrayList<Pits> pit;
-bubbles [] bubble=new bubbles[20];
+bubbles [] bubble=new bubbles[5];
+bubbles bubblePoints=new bubbles();
 Player blob=new Player(30,225);
 Lanes lane1=new Lanes(0,150,400,50);
 Lanes lane2=new Lanes(0,250,400,50);
 Lanes lane3=new Lanes(0,200,400,50);
 
+int finaldistance;
 int choice;
 void setup(){
   size(400,400);
   frameRate(60);
+
+  for(int d=0;d<3;d++){
+    laneDist=new ArrayList<Lanes>();
+    laneDist.add(new Lanes(0,0,0,0));
+  }
   for(int i=0;i<3;i++){
+    pit=new ArrayList<Pits>();
+    pit.add(new Pits(150,random(200,400),20,50));
+    pit.add(new Pits(200,random(700,900),20,50));
+    pit.add(new Pits(250,random(400,500),20,50));
+    for( i=0;i<bubble.length;i++){
+    bubble[i]=new bubbles();
+  }
+  
+  }
+  
+    for(int i=0;i<3;i++){
     boulder=new ArrayList<Boulders>();
     boulder.add(new Boulders(160,random(450,1200),60,60));
     boulder.add(new Boulders(210,random(470,1200),60,60));
@@ -21,88 +40,72 @@ void setup(){
    
   }
   
-  for(int i=0;i<3;i++){
-    pit=new ArrayList<Pits>();
-    pit.add(new Pits(160,random(200,400),100,100));
-    pit.add(new Pits(210,random(700,900),60,60));
-    pit.add(new Pits(260,random(400,500),60,60));
-  }
-  for(int i=0;i<bubble.length;i++){
-    bubble[i]=new bubbles();
-  }
-  
-} 
+}
 
 void draw(){
-  int timer=40;
   background(160,105,0);
- 
-   if(blob.playerAlive==true && start.startTrue==true){
-      fill(0);
-      text("TIME",15,15);
-     do{
-      timer=timer-1;
-     
-     rect(50,5,timer,8);
-   }while(timer>1);
-   }
-   
-   
-  start.displayStartscreen();
-  lane1.laneDisplay();
-  lane2.laneDisplay();
-  lane3.laneDisplay();
-  blob.displayBlob();
-  
-  
   switch (choice){
+    case 0:
+     start.displayStartscreen();
+     break;
     case 1:
-    start.startTrue=true;
-    blob.playerAlive=true;
-    blob.playerHit=false;
-    lane1.laneSpawn=true;
-    lane2.laneSpawn=true;
-    lane3.laneSpawn=true;
+    lane1.laneDisplay();
+    lane2.laneDisplay();
+    lane3.laneDisplay();
+    blob.displayBlob();
+    start.gameStart();
     for(int i=0;i<boulder.size();i++){
       boulder.get(i).displayBoulders();
       boulder.get(i).updateBoulders();
       boulder.get(i).collisionBoulder();
-      
-       
-
     for(int b=0;b<bubble.length;b++){
      bubble[b].updateBubbles();
      bubble[b].displayBubbles();
      bubble[b].collectBubbles();
-       }
-   
-    
-       
+       }        
   }
-  
+     
+      for(int d=0;d<laneDist.size();d++){
+        laneDist.get(d).laneDistance();
+        
+      }
+      fill(255);
+    text("DISTANCE: "+lane1.laneDistance(),160,15);
+      
    for(int pits=0;pits<pit.size();pits++){
       pit.get(pits).displayPits();
       pit.get(pits).updatePits();
-      pit.get(pits).pitCollision();
+      pit.get(pits).pitCollision(blob);
    }
-     
+   finaldistance=lane1.distance;
+   break;
+ case 2:
+        start.overGame=true;
+        lane1.distance=0;
+        start.gameOverScreen();
+        break;
    }
-    
+  
+  fill(255);
+  text("Bubbles: "+bubblePoints.points,290,15);
+  
 }
 
 
-  
-  
-  
 
 
 
 void keyPressed(){
   //start screen when the player presses space it disappears
   if(key==' '){
+    print(choice);
     if(choice==0){
     choice+=1;
     }
+    if(choice==2){
+      choice=choice-1;
+    }
+    
   }
   if(key==CODED){
     if(keyCode==UP){

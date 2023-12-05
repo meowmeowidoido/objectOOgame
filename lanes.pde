@@ -3,6 +3,7 @@ class Lanes{
  float positionY;
  float laneWidth;
  float laneHeight;
+ int distance;
  boolean laneSpawn=false;
    Lanes(float x, float y, float w, float h)
    {  
@@ -19,5 +20,13 @@ class Lanes{
  
    }
  }
+ 
+  int laneDistance(){
+  
+   distance=distance+1;
+
+   return distance;
+ }
+ 
   
 }

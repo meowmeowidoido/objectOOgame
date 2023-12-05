@@ -1,9 +1,11 @@
 class bubbles{
+  int points;
   PVector velocity=new PVector();
   PVector position=new PVector();
-  float bubbleWidth=10;
-  float bubbleHeight=10;
+  float bubbleWidth=20;
+  float bubbleHeight=20;
   bubbles(){ 
+    
   position.x=random(10,390);
   position.y=random(400,800);
  } 
@@ -14,22 +16,26 @@ class bubbles{
  void updateBubbles(){
    position.x+=velocity.x;
    position.y+=velocity.y;
-   velocity.y=-2;
+   velocity.y=-1;
    velocity.x=random(-0.5,0.5);
- }
- 
- void collectBubbles(){
-   if(dist(position.x,position.y,mouseX,mouseY)<10){
-    position.x=random(10,400);  //it also randomizes their positions again bringing them back to the left side and changing their y position each time
-    position.y=random(400,800);   
-    
-    
- }
- if(position.y<-5){
+    if(position.y<-5){
    position.y=random(430,800); 
  }
+ }
  
-
+ int collectBubbles(){
+   if(mousePressed && dist(position.x,position.y,mouseX,mouseY)<20){
+    position.x=random(10,400);  //it also randomizes their positions again bringing them back to the left side and changing their y position each time
+    position.y=random(400,800);  
+       
+       points++;
+       
+       
+    
+ }
+ return points;
+ 
 }
+  
  
 }

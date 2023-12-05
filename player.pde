@@ -1,5 +1,5 @@
 class Player{
-  boolean playerAlive=false;
+ 
   boolean playerHit=false;
   PVector position= new PVector ();
  Player(float x, float y){
@@ -13,16 +13,23 @@ class Player{
    return position.x;
  }
  
+ float playerRadius(float w, float h){
+   float radius;
+   radius=(w+h);
+   return radius;
+ }
+ 
+ 
  float getPositionY(){
    return position.y;
  }
  
- 
+
  void displayBlob(){
    
-   if(playerAlive==true){
+   if(playerHit==false){
    fill(150);
-   ellipse(position.x,position.y,20,20);
+   ellipse(position.x,position.y,playerRadius(10,10),playerRadius(10,10));
    
    }
  
