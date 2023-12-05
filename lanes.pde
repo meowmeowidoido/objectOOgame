@@ -3,7 +3,7 @@ class Lanes{
  float positionY;
  float laneWidth;
  float laneHeight;
- int distance;
+ int distance;//counts the distance the player "travels"
  boolean laneSpawn=false;
    Lanes(float x, float y, float w, float h)
    {  

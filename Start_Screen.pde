@@ -36,6 +36,7 @@ class Startscreen
      fill(255);
          text("GAME OVER", 150,200);
          text("DISTANCE REACHED: "+finaldistance,100,250);
+         text("PRESS SPACE TO RETRY",100,300);
          choice=2;
    
     lane1.laneSpawn=false;

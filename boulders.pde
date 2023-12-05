@@ -52,10 +52,6 @@ class Boulders
      
  
    if(dist(blob.position.x,blob.position.y,position.x,position.y)<blob.playerRadius(10,10)){
-     
-     
-     
-
      position.x=random(500,1200); 
      choice=choice+1;
      //print("hi");

@@ -1,10 +1,11 @@
 //classes being called
+BubbleTimer timerStart= new BubbleTimer();
 Startscreen start=new Startscreen();
 
 ArrayList<Lanes> laneDist;
 ArrayList<Boulders> boulder;
 ArrayList<Pits> pit;
-bubbles [] bubble=new bubbles[5];
+bubbles [] bubble=new bubbles[10];
 bubbles bubblePoints=new bubbles();
 Player blob=new Player(30,225);
 Lanes lane1=new Lanes(0,150,400,50);
@@ -48,7 +49,9 @@ void draw(){
     case 0:
      start.displayStartscreen();
      break;
-    case 1:
+    case 1: 
+    timerStart.timerDown();
+    timerStart.displayTime();
     lane1.laneDisplay();
     lane2.laneDisplay();
     lane3.laneDisplay();
@@ -58,28 +61,31 @@ void draw(){
       boulder.get(i).displayBoulders();
       boulder.get(i).updateBoulders();
       boulder.get(i).collisionBoulder();
-    for(int b=0;b<bubble.length;b++){
+    
+  }
+     
+     for(int b=0;b<bubble.length;b++){
      bubble[b].updateBubbles();
      bubble[b].displayBubbles();
      bubble[b].collectBubbles();
        }        
-  }
-     
       for(int d=0;d<laneDist.size();d++){
         laneDist.get(d).laneDistance();
         
       }
       fill(255);
-    text("DISTANCE: "+lane1.laneDistance(),160,15);
+      text("DISTANCE: "+lane1.laneDistance(),160,15);
       
    for(int pits=0;pits<pit.size();pits++){
       pit.get(pits).displayPits();
       pit.get(pits).updatePits();
       pit.get(pits).pitCollision(blob);
    }
+   text("Bubbles: "+bubblePoints.getPoints(),290,15);
    finaldistance=lane1.distance;
    break;
  case 2:
+        timerStart.time=100;
         start.overGame=true;
         lane1.distance=0;
         start.gameOverScreen();
@@ -87,7 +93,7 @@ void draw(){
    }
   
   fill(255);
-  text("Bubbles: "+bubblePoints.points,290,15);
+  
   
 }
 
