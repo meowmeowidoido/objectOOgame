@@ -1,15 +1,19 @@
 /*Name: Abbas Haidari
-
+  Game Name: run4urlife/dodge4urlife
+  Instructions: Dodge the obstacles using up and down arrow keys
+                Collect bubbles to reset timer
 */
 //classes being called
 BubbleTimer timerStart= new BubbleTimer();
 MainMenu menu=new MainMenu();
-Player p1=new Player(30,225);
+Player p1;
 //different lanes for each class
 //setting the different constructor parameters for each lane
 Lanes lane1=new Lanes(0,150,400,50);//first  lane
 Lanes lane2=new Lanes(0,250,400,50);//middle lane
 Lanes lane3=new Lanes(0,200,400,50);//third lane
+
+BackgroundDisplays backgroundImages=new BackgroundDisplays();
 
 //arraylist classes for 
 ArrayList<Lanes> laneDist;//used for distance traveled
@@ -22,7 +26,7 @@ int choice;//iused for the switch cases and keypressed for starting the game
 void setup(){
   size(400,400);
   frameRate(60);//setting framerate to 60 to have smooth gameplay
-
+p1=new Player(30,225);
 //new arraylist for the "calculating" the distance
   for(int d=0;d<1;d++){//for loop used d is incremented 
     laneDist=new ArrayList<Lanes>();
@@ -61,11 +65,14 @@ void draw(){
      menu.displayStartscreen();//calling start screen function in menu class
      break;
     case 1: 
+    backgroundImages.pillars();
+    backgroundImages.backgroundFloor();
     timerStart.timerDown();//calling timerDown function in timerStart class to decrease time
     timerStart.displayTime();//displays time!
     lane1.laneDisplay();//lane 1 display
     lane2.laneDisplay();//lane 2 display
     lane3.laneDisplay();//lane 3 display
+    
     p1.displayPlayer();//calling function displaying player character in player
     menu.gameStart();//calling function that starts game
     for(int i=0;i<boulder.size();i++){//arraylist moves boulders with update boulders and increments it 
@@ -90,8 +97,9 @@ void draw(){
    for(int pitInc=0;pitInc<pit.size();pitInc++){
       pit.get(pitInc).displayPits();//calling display method to show pits
       pit.get(pitInc).updatePits();//calling update method to update positions etc. of pits and make them move 
+      
       pit.get(pitInc).pitCollision(p1);//calling collision method to detect when player has collided
-   }
+ }
    finaldistance=lane1.distance;//displays the final distance, takes the value from lane1.distance
    break;//break!
  case 2:
@@ -120,6 +128,10 @@ void keyPressed(){//key pressed function detects well presses.
     }
     if(choice==2){//if it is two it will minus by 1.
       choice=choice-1;
+      
+    }
+    if(choice>2){
+      choice=2;
     }
     
   }

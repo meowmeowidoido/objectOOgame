@@ -9,10 +9,11 @@ class BubbleTimer{
     
     
   }
-  
- 
+
   void displayTime(){//displays time put time variable in the width so it decreases like a bar!
-    rect(10,15,time,10);
+    fill(0,0,0);
+    text("TIME:",1,15);
+    rect(50,2,time,10);
   }
   void timerDown(){
     //timer goes down by -20 each second 

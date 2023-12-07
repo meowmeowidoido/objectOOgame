@@ -1,11 +1,12 @@
 class Player{
- 
   boolean playerHit=false;//detects if the player has been hit.
   PVector position= new PVector ();//pvector for the position
+  PImage playerImg;
+
  Player(float x, float y){//player constructor with y and x parameters
   position.x=x;// setting the values of the pvector position x and y to the constructor parameter values set in the class
   position.y=y;
-  
+  playerImg=loadImage("blob.png"); //blob image received from: https://lil-cthulhu.itch.io/pixelart-blob 
  }
  
  
@@ -31,7 +32,9 @@ class Player{
    
    if(playerHit==false){//if playerHit is false it will show the player
    fill(150);
-   ellipse(position.x,position.y,playerRadius(10,10),playerRadius(10,10));
+   imageMode(CENTER);
+  // playerImg.resize(100,100);
+   image(playerImg,position.x,position.y,playerRadius(20,20),playerRadius(10,10));
    
    }
  
