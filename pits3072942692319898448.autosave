@@ -44,12 +44,15 @@ class Pits
   
     //if the distance of the position x of the rect and its width/2, pit y position plus the pit height/2
     //and the player position x and player position y is less than the player radius it detects the player
-   if(dist(player.position.x,player.position.y,position.x+pitWidth/2,position.y+pitHeight/2)<p1.playerRadius(10,10)){
-     //player is not detected when they are boulder overlaps them when they are on a different lane
-     position.x=random(500,1200); //position is reset when they are hit.
-     choice=choice+1;//increases choice to 2, prompts game over screen
-     //print("hi"); debug
-     //print(choice); debug
+         if(dist(position.x+pitWidth/2,position.y+pitHeight/2,player.getPositionX(),player.getPositionY())<player.playerRadius(10,10))
+         { 
+           //randomizes position x when hit.
+          
+            //choice is incremented to two so the game over screen will appear
+           choice=choice+1;
+           
+           // position.x=random(500,1200);
+         //  print("hi"); debugging.
            
      
      
