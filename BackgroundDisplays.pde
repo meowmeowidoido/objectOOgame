@@ -1,6 +1,6 @@
 class BackgroundDisplays{
   
- 
+
   
   void pillars(){
     //display for the pillar torch holders
@@ -24,7 +24,7 @@ class BackgroundDisplays{
   
   
   void torchHolder(){
-      fill(255);
+      fill(160,140,50);
       arc(20,60,40,20,6.3,9.5);//left 1st
       arc(110,60,40,20,6.3,9.5);//left side second
       arc(210,60,40,20,6.3,9.5);//middle 
@@ -45,6 +45,8 @@ class BackgroundDisplays{
 
 
    }
+   
+  
     
   
   

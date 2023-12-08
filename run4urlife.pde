@@ -132,7 +132,8 @@ void keyPressed(){//key pressed function detects well presses.
       choice=choice-1;
       
     }
-    if(choice>2){
+    if(choice>2){//if the choice is more than two it is set back to two, this is incase the player 
+    //hit by both the boulder and the pit
       choice=2;
     }
     

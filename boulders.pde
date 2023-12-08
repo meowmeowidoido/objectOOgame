@@ -28,6 +28,13 @@ class Boulders
         position.x-=2;
         velocity.x-=0.5;
         position.sub(position);
+        if(p1.playerHit==true)
+        {
+          position.x=2;
+          position.x-=2;
+          velocity.x=0.5;
+          velocity.x-=0.5;
+        }
         if(velocity.x==5.00){
           velocity.x=5.00;//velocity cannot go higher than 5.00
           
@@ -40,7 +47,7 @@ class Boulders
       //if the position.x is less than -40
       //it will increase the velocity by 0.2 each time.
       velocity.x-=0.2;
-      position.x=random(600,2400);//and randomizes their position from 500-1200 X position.
+      position.x=random(400,2000);//and randomizes their position from 500-1200 X position.
    
      }
      //adds the velocity
@@ -53,9 +60,6 @@ class Boulders
       
      
    }
-
-     
- 
    
    void collisionBoulder(){//collision function
      
