@@ -67,6 +67,8 @@ void draw(){
     case 1: 
     backgroundImages.pillars();
     backgroundImages.backgroundFloor();
+    backgroundImages.torchHolder();
+    backgroundImages.flame();
     timerStart.timerDown();//calling timerDown function in timerStart class to decrease time
     timerStart.displayTime();//displays time!
     lane1.laneDisplay();//lane 1 display
